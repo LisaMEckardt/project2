@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stumbling_stones</title>
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-size: 20px;
+            font-family: Montserrat, 'Times New Roman', Times, serif;
+            text-rendering: optimizeLegibility;
+        }
+
+        .content {
+            max-width: 640px;
+            margin: auto;
+        }
+
+        .header {
+          padding: 10px 16px;
+          background: whitesmoke;
+          color: goldenrod;
+          text-align: center;
+        }
+
+        .sticky {
+          position: fixed;
+          top: 0;
+          width: 100%
+        }
+
+        .sticky + .content {
+          padding-top: 102px;
+        }
+
+        a {
+            color: goldenrod;
+        }
+
+        .footer {
+            background: #f4f4f4;
+            text-align: center;
+            font-size: 0.8em;
+            margin-top: 4em;
+            padding: 4em 0;
+        }
+
+        figure {
+            margin: 0;
+            padding-bottom: 1.2em;
+        }
+
+        figcaption {
+            font-size: 0.7em;
+            text-align: center;
+            margin-top: 0.3em;
+            color: grey;
+        }
+
+       
+
+        h1 {
+            font-family: 'Montserrat', Georgia, serif;
+            font-weight: bold;
+            font-size: 2.4em;
+            line-height: 1.1;
+        }
+
+        .subhead {
+            font-family: 'Montserrat', Georgia, serif;
+            color: grey;
+        }
+
+
+        .byline .subhead {
+            font-family: 'Montserrat', Georgia, serif;
+            color: goldenrod;
+        }
+
+        iframe,
+        img,
+        video {
+            max-width: 100%;
+        }
+
+        p {
+            line-height: 1.6;
+            margin: 0;
+            padding-bottom: 1.2em;
+        }
+
+        ul {
+            margin: 0;
+            padding-bottom: 1em;
+            line-height: 1.6;
+        }
+
+        iframe {
+            padding-bottom: 1.2em;
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+            background: #fffbaf;
+            font-size: 0.85em;
+        }
+
+        .full-width figure {
+            text-align: center;
+        }
+
+        /* margin on mobile */
+        @media (max-width: 640px) {
+            body {
+                font-size: 18px;
+            }
+
+            .content {
+                padding-left: 0.5em;
+                padding-right: 0.5em;
+            }
+        }
+        #scrolly {
+            position: relative;
+            padding: 1rem;
+        }
+
+        .scrolly-overlay {
+            position: relative;
+            padding: 0;
+            max-width: 35rem;
+            margin: 0 auto;
+        }
+
+        .sticky-thing {
+            position: -webkit-sticky;
+            position: sticky;
+            left: 0;
+            width: 100%;
+            margin: 0;
+            z-index: 0;
+            top: 0;
+            height: 100vh;
+            /* Center everything inside */
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            justify-content: center;
+            }
+
+        .step {
+            margin: 0 auto 2rem auto;
+            margin-bottom: 25rem;
+            background-color: white;
+            color: black;
+            border: 3px solid white;
+        }
+
+        .step p {
+            text-align: center;
+            padding: 1rem;
+            font-size: 1.25rem;
+            /* border: black; */
+            border: 3px solid goldenrod;
+        }
+
+        .hidden { visibility: hidden; } */
+
+        /* When it's less than 700 pixels wide, do normal scrollytelling */
+        @media only screen and (min-width: 700px) {
+        #scrolly.side-by-side {
+          display: flex;
+        }
+
+        #scrolly.side-by-side > div {
+          flex-basis: 0;
+          flex-grow: 1;
+          flex-shrink: 1;
+          padding: 0.75em;
+        }
+
+        #scrolly.side-by-side .scrolly-overlay {
+          margin-top: 70vh;
+          order: 0;
+          /* Change these to adjust sizing options */
+          min-width: 15rem;
+          max-width: 20rem;
+        }
+
+        #scrolly.side-by-side .sticky-thing {
+          order: 1;
+          flex-grow: 2;
+        }
+      }
+    </style>
+
+
+
+
+<script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/scrollama/3.0.4/scrollama.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.3.0/d3.min.js"></script>
+</head>
+
+<body>
+</div>
+</div>
+
+
+</div>
+<div class="full-width">
+  <figure>
+      <img
+          src="/Users/lismeck/Documents/Lede Program/lede_projects/Stolpersteine/ai2htmldemo/stumbling_stones_photo.jpg">
+      <figcaption>Stumbling stones in my neighborhood. photo: Lisa-Marie Eckardt</figcaption>
+  </figure>
+</div>
+<div class="content">
+    <p></p>
+    
+    <div class="content">
+        <div class="header">
+            <p></p>
+            <h1>What happened to my Neighbors?</h1>
+            <p class="subhead">How the biggest memorial in the world reminds us of victims of the Nazis in many German cities and all over Europe. <br/br> What we can learn about them and our neighborhoods.</p>
+            <p class="byline">By <a href="https://lisamarieeckardt.wordpress.com/">Lisa-Marie Eckardt</a></p>
+         </div>
+        
+
+        
+         <br></br>
+        <p>Actually, the biggest (decentral!) memorial in the world is pretty small: "Stumbling Stones" (in German: "Stolpersteine") are tiny shiny stones in the pavement. But you can find them in the streets of almost every city in Germany, in many European countries and in Russia. <br> </br> Each stone reminds us of a victim of the nazis, right in front of the house where they last lived. Each stone has an inscription: A name, the year the person was born and sometimes the year they died. But often you can only guess, when you read the word "deported". <br></br> Although the stones are called "Stumbling Stones" they are even in the ground and you will not stumble. So you have to take a closer look ... That is why I want to take you on a walk to find all of the stones in my neighborhood in the city of Hamburg:</p>   
+      
+  
+          <section id="scrolly">
+            <div class="sticky-thing">
+              <div class="ai2html-container">
+    
+    <!-- ai2html goes below this line -->
+    
+
+<!-- Generated by ai2html v0.119.7 - 2024-07-22 14:17 -->
+<!-- ai file: stumbling-stones3.ai -->
+<style media="screen,print">
+	#g-stumbling-stones3-box ,
+	#g-stumbling-stones3-box .g-artboard {
+		margin:0 auto;
+	}
+	#g-stumbling-stones3-box p {
+		margin:0;
+	}
+	#g-stumbling-stones3-box .g-aiAbs {
+		position:absolute;
+	}
+	#g-stumbling-stones3-box .g-aiImg {
+		position:absolute;
+		top:0;
+		display:block;
+		width:100% !important;
+	}
+	#g-stumbling-stones3-box .g-aiSymbol {
+		position: absolute;
+		box-sizing: border-box;
+	}
+	#g-stumbling-stones3-box .g-aiPointText p { white-space: nowrap; }
+	#g-stumbling-stones3-Artboard_1 {
+		position:relative;
+		overflow:hidden;
+	}
+	#g-stumbling-stones3-Artboard_1 p {
+		font-weight:500;
+		line-height:14px;
+		opacity:1;
+		letter-spacing:0em;
+		font-size:12px;
+		text-align:left;
+		color:rgb(0,0,0);
+		text-transform:none;
+		padding-bottom:0;
+		padding-top:0;
+		mix-blend-mode:normal;
+		font-style:normal;
+		height:auto;
+		position:static;
+	}
+	#g-stumbling-stones3-Artboard_1 .g-pstyle0 {
+		line-height:24px;
+		font-size:20px;
+	}
+	#g-stumbling-stones3-Artboard_1 .g-pstyle1 {
+		font-family:arial,helvetica,sans-serif;
+		line-height:13px;
+		height:13px;
+		font-size:11px;
+	}
+	#g-stumbling-stones3-Artboard_1 .g-pstyle2 {
+		font-family:arial,helvetica,sans-serif;
+		height:14px;
+	}
+
+</style>
+
+<div id="g-stumbling-stones3-box" class="ai2html">
+
+	<!-- Artboard: Artboard_1 -->
+	<div id="g-stumbling-stones3-Artboard_1" class="g-artboard" style="max-width: 600px;max-height: 548px" data-aspect-ratio="1.095" data-min-width="0">
+<div style="padding: 0 0 91.3333% 0;"></div>
+		<img id="g-stumbling-stones3-Artboard_1-img" class="g-stumbling-stones3-Artboard_1-img g-aiImg" alt="" src="stumbling-stones3-Artboard_1.jpg"/>
+<svg class="g-stumbling-stones3-Artboard_1-interactions-img g-aiImg" id="g-stumbling-stones3-Artboard_1-interactions-img" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" baseProfile="tiny" version="1.2" viewBox="0 0 600 548">
+  <g id="anno2">
+    <path d="M234.168,95.312c6.2,4.166,11.168,10.142,14.131,16.999" fill="#000" stroke-width="0"/>
+    <path d="M217.699,235.57c6.897-10.009,15.318-18.967,24.882-26.47" fill="#000" stroke-width="0"/>
+    <path d="M153.408,178.428c20.582,2.717,41.163,5.433,61.745,8.15,6.47.854,13.085,1.752,18.892,4.73" fill="#000" stroke-width="0"/>
+    <path d="M130,78.1c8.987,2.661,18.298,4.23,27.661,4.659,14.06.645,28.439-1.238,42.036,2.399" fill="#000" stroke-width="0"/>
+    <path d="M204.325,46.68c1.705-8.869,6.631-17.083,13.652-22.765" fill="#000" stroke-width="0"/>
+  </g>
+  <g id="anno3">
+    <path d="M317.477,75.505c-5.259,6.172-12.045,11.033-19.581,14.027" fill="#000" stroke-width="0"/>
+  </g>
+  <g id="anno4">
+    <path d="M149.194,36.532c11.038,2.264,21.665,6.518,31.216,12.497" fill="#000" stroke-width="0"/>
+    <path d="M140.852,122.164c18.904-2.609,38.118-2.964,57.105-1.055" fill="#000" stroke-width="0"/>
+    <path d="M337.844,408.193c-1.596,5.58-5.172,10.347-8.677,14.974-5.713,7.542-11.426,15.084-17.138,22.625" fill="#000" stroke-width="0"/>
+  </g>
+  <g id="anno5">
+    <path d="M355.811,194.128c-10.373,2.012-20.261,6.479-28.627,12.932" fill="#000" stroke-width="0"/>
+  </g>
+<style>
+#g-stumbling-stones3-Artboard_1-interactions-img rect, #g-stumbling-stones3-Artboard_1-interactions-img circle, #g-stumbling-stones3-Artboard_1-interactions-img path, #g-stumbling-stones3-Artboard_1-interactions-img line, #g-stumbling-stones3-Artboard_1-interactions-img polyline, #g-stumbling-stones3-Artboard_1-interactions-img polygon { vector-effect: non-scaling-stroke; }
+</style>
+</svg>
+		<div id="g-ai0-1" class="g-interactions g-aiAbs" style="top:1.2774%;left:36.6275%;width:33.1667%;">
+			<p>Edith Eggers (maden name Libis)</p>
+			<p>Frida Libis</p>
+			<p>Siegmund Libis</p>
+		</div>
+		<div id="g-ai0-2" class="g-interactions g-aiAbs" style="top:3.8321%;left:11.4148%;width:18.8333%;">
+			<p>Martin Furmanek</p>
+		</div>
+		<div id="g-ai0-3" class="g-interactions g-aiAbs" style="top:11.1314%;left:52.0352%;width:18%;">
+			<p>Bruno Schulz</p>
+		</div>
+		<div id="g-ai0-4" class="g-interactions g-aiAbs" style="top:11.4964%;left:7.3527%;width:17.3333%;">
+			<p>Fanny Borower</p>
+			<p>Wolf Borower</p>
+		</div>
+		<div id="g-ai0-5" class="g-interactions g-aiAbs" style="top:20.6204%;left:38.1248%;width:31.1667%;">
+			<p>Clara Cohn (maden name Laser)</p>
+			<p>Adolf Laser</p>
+			<p>Rudolph Michael Laser </p>
+		</div>
+		<div id="g-ai0-6" class="g-interactions g-aiAbs" style="top:20.9854%;left:9.0336%;width:17.3333%;">
+			<p>Rudolf Mokry</p>
+		</div>
+		<div id="g-ai0-7" class="g-interactions g-aiAbs" style="top:28.2847%;left:60.2994%;width:34.5%;">
+			<p>Hermine Baron</p>
+			<p>Katharina Leipelt (maden name Baron)</p>
+			<p>Hans Leipelt</p>
+		</div>
+		<div id="g-ai0-8" class="g-interactions g-aiAbs" style="top:29.7445%;left:11.5548%;width:28.5%;">
+			<p>Sara Bartfeld</p>
+			<p>Israel Bartfeld</p>
+		</div>
+		<div id="g-ai0-9" class="g-interactions g-aiAbs" style="top:38.6861%;left:22.0601%;width:20.6667%;">
+			<p>Helene Guttmann</p>
+			<p>Jacob Guttmann</p>
+		</div>
+		<div id="g-ai0-10" class="g-interactions g-aiAbs" style="top:NaN%;left:4.0768%;width:38.3333%;">
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p class="g-pstyle0">These are the places where I found &ldquo;Stumbling Stones&rdquo; in my neighborhood. </p>
+			<p class="g-pstyle0">But how many are there?</p>
+		</div>
+		<div id="g-ai0-11" class="g-interactions g-aiAbs" style="top:63.8686%;left:55.1168%;width:36.5%;">
+			<p>Hermine Baron</p>
+			<p>Katharina Leipelt (maden name Baron)</p>
+			<p>Hans Leipelt</p>
+			<p>Maria Leipelt</p>
+		</div>
+		<div id="g-ai0-12" class="g-mapFurniture g-aiAbs g-aiPointText" style="top:85.8587%;margin-top:-7.5px;left:74.5%;width:30px;">
+			<p class="g-pstyle1">&copy;</p>
+		</div>
+		<div id="g-ai0-13" class="g-mapFurniture g-aiAbs g-aiPointText" style="top:85.8587%;margin-top:-7.5px;left:76.3066%;width:100px;">
+			<p class="g-pstyle1">OpenStreetMap</p>
+		</div>
+		<div id="g-ai0-14" class="g-mapFurniture g-aiAbs g-aiPointText" style="top:85.8587%;margin-top:-7.5px;left:89.7048%;width:79px;">
+			<p class="g-pstyle1">contributors</p>
+		</div>
+		<div id="g-ai0-15" class="g-mapFurniture g-aiAbs g-aiPointText" style="top:91.6236%;margin-top:-8.1px;left:6.3333%;width:88px;">
+			<p class="g-pstyle2">"Stumbling Stones" in Hamburg-Wilhelmsburg"</p>
+		</div>
+	</div>
+
+</div>
+
+<!-- End ai2html - 2024-07-22 14:17 -->
+
+
+
+
+
+
+    
+    
+    <!-- ai2html goes above this line -->
+    
+              </div>
+            </div>
+    
+            <div class="scrolly-overlay">
+              <div class="step" id="step-zero">
+                <p>
+                <br> </br>
+                What I found out: <br> </br>
+                Compared to other parts of the city there are just a few "Stumbling Stones" in my borough called Wilhelmsburg.
+                <br> </br>
+                </p>
+              </div>
+              <div class="step" id="step-one">
+                <p>
+                  <br> </br>
+                  The stones are memorials for people who were murdered, deported, distributed or driven to suizide 
+                  by the Nazis. <br> </br>
+                  In my neighbourhood some but not all of them where jewish ...
+                <br> </br>
+                </p>
+              </div>
+              <div class="step" id="step-two">
+                <p>
+                  <br> </br>
+                ... others got deported for being homosexual ...
+                <br> </br>
+                </p>
+              </div>
+              <div class="step" id="step-three">
+                <p>
+                  <br> </br>
+                ... or for being part of resistance groups.
+                  <br> </br>
+                </p>
+              </div>
+              <div class="step" id="step-four">
+                <p>
+                  <br> </br>
+                What I found suprising: <br> </br>
+                Some of the victims got more than one stone in my borough, plus a third one in another part of the city.
+                  <br> </br>
+                </p>
+              </div>
+             
+              
+          </section>
+    
+        <script>
+          
+        /* Scrollytelling code goes under here */
+    
+          //   Entering Step Zero
+          d3.select("#step-zero").on('stepin',function(e) {
+            d3.select("#step-zero").style('background-color', 'whitesmoke')
+            d3.select("#anno1").classed('hidden', true)
+            d3.select("#anno2").classed('hidden', true)
+            d3.select("#anno3").classed('hidden', true)
+            d3.select("#anno4").classed('hidden', true)
+            d3.select("#anno5").classed('hidden', true)
+          })
+    
+          //   Entering Step One
+          d3.select("#step-one").on('stepin',function(e) {
+            d3.select("#step-one").style('background-color', 'whitesmoke')
+            d3.select("#anno1").classed('hidden', true)
+            d3.select("#anno2").classed('hidden', false)
+            d3.select("#anno3").classed('hidden', true)
+            d3.select("#anno4").classed('hidden', true)
+            d3.select("#anno5").classed('hidden', true)
+          })
+    
+          //   Entering Step Two
+          d3.select("#step-two").on('stepin',function(e) {
+            d3.select("#step-two").style('background-color', 'whitesmoke')
+            d3.select("#anno1").classed('hidden', true)
+            d3.select("#anno2").classed('hidden', true)
+            d3.select("#anno3").classed('hidden', false)
+            d3.select("#anno4").classed('hidden', true)
+            d3.select("#anno5").classed('hidden', true)
+          })
+      
+          //   Entering Step Three
+          d3.select("#step-three").on('stepin',function(e) {
+            d3.select("#step-three").style('background-color', 'whitesmoke')
+            d3.select("#anno1").classed('hidden', true)
+            d3.select("#anno2").classed('hidden', true)
+            d3.select("#anno3").classed('hidden', true)
+            d3.select("#anno4").classed('hidden', false)
+            d3.select("#anno5").classed('hidden', true)
+          })
+        
+          //   Entering Step Four
+          d3.select("#step-four").on('stepin',function(e) {
+            d3.select("#step-four").style('background-color', 'whitesmoke')
+            d3.select("#anno1").classed('hidden', true)
+            d3.select("#anno2").classed('hidden', true)
+            d3.select("#anno3").classed('hidden', true)
+            d3.select("#anno4").classed('hidden', true)
+            d3.select("#anno5").classed('hidden', false)
+          })
+  
+          
+        </script>
+    
+    <script>
+        const scroller = scrollama();
+    
+        scroller
+            .setup({
+                step: "#scrolly .scrolly-overlay .step",
+                offset: 0.75,
+                debug: false
+            })
+            .onStepEnter(function({ element, index, direction}) {
+                const event = new CustomEvent('stepin', { detail: { direction: direction } })
+                element.dispatchEvent(event);
+            })
+            .onStepExit(function({ element, index, direction }) {
+                const event = new CustomEvent('stepout', { detail: { direction: direction } })
+                element.dispatchEvent(event);
+            });
+    
+        window.addEventListener("resize", scroller.resize);
+        </script>
+    
+    
+        <!-- ai2html resizer script -->
+    
+    <script type="text/javascript">
+
+      // When the user scrolls the page, execute myFunction
+      window.onscroll = function() {myFunction()};
+
+      // Get the header
+      var header = document.getElementById("myHeader");
+
+      // Get the offset position of the navbar
+      var sticky = header.offsetTop;
+
+      // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+      function myFunction() {
+        if (window.pageYOffset > sticky) {
+          header.classList.add("sticky");
+        } else {
+          header.classList.remove("sticky");
+        }
+      }
+
+      (function() {
+          // only want one resizer on the page
+          if (document.documentElement.className.indexOf("g-resizer-v3-init") > -1) return;
+          document.documentElement.className += " g-resizer-v3-init";
+          // require IE9+
+          if (!("querySelector" in document)) return;
+          function resizer() {
+              var elements = Array.prototype.slice.call(document.querySelectorAll(".g-artboard[data-min-width]")),
+                  widthById = {};
+              elements.forEach(function(el) {
+                  var parent = el.parentNode,
+                      width = widthById[parent.id] || parent.getBoundingClientRect().width,
+                      minwidth = el.getAttribute("data-min-width"),
+                      maxwidth = el.getAttribute("data-max-width");
+                  widthById[parent.id] = width;
+    
+                  if (+minwidth <= width && (+maxwidth >= width || maxwidth === null)) {
+                      el.style.display = "block";
+                  } else {
+                      el.style.display = "none";
+                  }
+              });
+              try {
+                  if (window.parent && window.parent.$) {
+                      window.parent.$("body").trigger("resizedcontent", [window]);
+                  }
+                  if (window.require) {
+                      require(['foundation/main'], function() {
+                          require(['shared/interactive/instances/app-communicator'], function(AppCommunicator) {
+                              AppCommunicator.triggerResize();
+                          });
+                      });
+                  }
+              } catch(e) { console.log(e); }
+          }
+    
+          document.addEventListener('DOMContentLoaded', resizer);
+          // feel free to replace throttle with _.throttle, if available
+          window.addEventListener('resize', throttle(resizer, 200));        
+    
+          function throttle(func, wait) {
+              // from underscore.js
+              var _now = Date.now || function() { return new Date().getTime(); },
+                  context, args, result, timeout = null, previous = 0;
+              var later = function() {
+                  previous = _now();
+                  timeout = null;
+                  result = func.apply(context, args);
+                  if (!timeout) context = args = null;
+              };
+              return function() {
+                  var now = _now(), remaining = wait - (now - previous);
+                  context = this;
+                  args = arguments;
+                  if (remaining <= 0 || remaining > wait) {
+                      if (timeout) {
+                          clearTimeout(timeout);
+                          timeout = null;
+                      }
+                      previous = now;
+                      result = func.apply(context, args);
+                      if (!timeout) context = args = null;
+                  } else if (!timeout && options.trailing !== false) {
+                      timeout = setTimeout(later, remaining);
+                  }
+                  return result;
+              };
+          }
+    
+         
+      })();
+    </script>
+<div class="content"></div>
+
+<p>The project by the artist Gunter Demnig that started in 1992. Today there are more than 100.000 Stepping Stones.
+  Maybe that sounds like a lot. <br> </br>
+  But 6 million jewish people where murdered in the Holocaust. And according to the <a href="https://encyclopedia.ushmm.org/content/en/article/documenting-numbers-of-victims-of-the-holocaust-and-nazi-persecution">United States Holocaust Memorial Museum (USHMM)</a> there were about 17 million victims all together – including a large number of sovjet, polish and serbian non-jewish civilians, prisioners of war, disabled people, Sinti and Roma, homosexual people and other groups. Political oponents and people who fought for the resistance are not includet in the USHMM statistic.</p>
+
+<p> Hamburg has 6971 (July 2024) stumbling stones. That there are just a few stones in my neighborhood could have different reasons: The project is not complete yet, each stone needs a sponsor and my neighborhood is less wealthy than others. Also my borough is on an island so it is a little remote and not as much populated (today but probabably also back then). Or was it maybe a place where people got more support to hide or leave the country? I have to do more research to answer that question.
+</p>
+
+<p> In Berlin there are 10.755 stumbling stones. With more than 1600 stones the borough Charlottenburg has the most. There are streets with more than 100 victims – 155 lived in Sybelstraße, 122 in Giesebrechtstraße. The borough Wilmerdorf has more than 1400 and Mitte more than 1000.</p>    
+
+<iframe title="More stones in the west" aria-label="Karte" id="datawrapper-chart-OkQ0o" 
+            src="https://datawrapper.dwcdn.net/OkQ0o/1/" scrolling="no" frameborder="0" 
+            style="width: 0; min-width: 100% !important; border: none;" height="598" data-external="1"></iframe>
+        <script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r=0;r<e.length;r++)if(e[r].contentWindow===a.source){var i=a.data["datawrapper-height"][t]+"px";e[r].style.height=i}}}))}();
+        </script>
+
+
+<p> 164 victims with stumbling stones in Berlin had the surname Cohn. Among the 10 most common names are also Wolff (90), Hirsch (73), Lewin (69), Levy (67), Rosenthal (66), Meyer (64), Schlesinger (43), Blumenthal (41) and Goldstein (40).
+</p>   
+
+</div>
+    </div>
+    <div class="footer">
+        <div class="content">
+            <p>You can find this project <a href="https://github.com/LisaMEckardt/project2">here on GitHub</a></p>
+        </div>
+    </div>
+</body>
+
+</html>
