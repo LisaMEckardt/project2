@@ -8,7 +8,7 @@ I actually went on a walk through my neighbourhood and took photos of every "Stu
 
 The dataset for Berlin is good to show the locations and to see in which boroughs and districts are the most. Also I found out which names where most comon among the victims. But it did not give me the inscription of the stones. 
 
-If I had more time, I would fix my scraper for Hamburg and get all the inscriptions. Then I can find out more about the age, when the people were deported and to which concentration camps and other destinations they were brought.
+If I had more time, I would analyse all the inscriptions. I can find out more about the age, when the people were deported and to which concentration camps and other destinations they were brought.
 
 For my neighbourhood I researched the background of the victims: How many of them were jewish people, who was an activist in a resistance group and who was deported for being homosexual. These informations are not in the inscriptions. I got them by reading the biographies.
 
