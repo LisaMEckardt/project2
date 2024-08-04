@@ -209,6 +209,361 @@
 <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollama/3.0.4/scrollama.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.3.0/d3.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    
+<!-- your JS code that uses d3 to manipulate data -->
+<script>
+
+  // Step 4. load your data with d3.csv()
+  d3.csv("stumbling_stones_d3.csv")
+  // d3.json("happiness-sample-data.json")
+    .then(data => {
+
+      // check if the data is loaded:
+      console.log(data)
+
+      // == your code happens below ==
+      
+      // Step 5. create an SVG container inside #my-svg-chart using d3.select().append()
+      const myChart1 = d3
+        .select('#my-svg-chart1')
+        .append('svg')
+        .attr('width', 640)
+        .attr('height', 50)
+
+        const myChart2 = d3
+        .select('#my-svg-chart2')
+        .append('svg')
+        .attr('width', 640)
+        .attr('height', 50)
+
+        const myChart3 = d3
+        .select('#my-svg-chart3')
+        .append('svg')
+        .attr('width', 640)
+        .attr('height', 50)
+
+
+      // Step 6. create SVG elements binded with data
+      const stones1 = myChart1
+        .selectAll('g')
+        .data(data)
+        .join('g');
+
+        const stones2 = myChart2
+        .selectAll('rect')
+        .data(data)
+        .join('rect');
+
+        const stones3 = myChart3
+        .selectAll('rect')
+        .data(data)
+        .join('rect');
+
+      // Step 7. Position the SVG shapes at the right places
+      const gridSize = 20, gap = 2;
+
+      stones1
+        // SVG rectangle specific attributes
+        .append('rect')
+        .attr('x', (d,i) => {
+          return Math.floor(i%22)*(gridSize+ gap);
+        })
+        .attr('y', (d,i) => {
+          return Math.floor(i/22)*(gridSize+ gap);
+        })
+        .attr('width', gridSize)
+        .attr('height', gridSize)
+
+        stones1
+        .append('text')
+        // SVG text specific attributes
+        .attr('x', (d,i) => {
+          return Math.floor(i%22)*(gridSize+ gap);
+        })
+        .attr('y', (d,i) => {
+          return Math.floor(i/22)*(gridSize+ gap) + gridSize;
+        })
+        .attr('dy', -5)
+   //     .text((d,i)=> d.jewish);
+
+
+      // Step 8. Encode data onto the SVG shapes
+      let goldCount1 = 0;
+        stones1.each(function(d) {
+          if (d.jewish == 'true') {
+            goldCount1++;
+          }
+        });
+
+        stones1.style('fill', (d, i) => {
+          if (i < goldCount1) {
+            return 'goldenrod';
+          } else {
+            return 'lightgrey';
+          }
+        });
+
+      stones2
+
+        .attr('x', (d,i) => {
+          return Math.floor(i%22)*(gridSize+ gap);
+        })
+        .attr('y', (d,i) => {
+          return Math.floor(i/22)*(gridSize+ gap);
+        })
+        .attr('width', gridSize)
+        .attr('height', gridSize)
+
+  
+        let goldCount2 = 0;
+        stones2.each(function(d) {
+          if (d.homosexual == 'true') {
+            goldCount2++;
+          }
+        });
+
+        stones2.style('fill', (d, i) => {
+          if (i < goldCount2) {
+            return 'goldenrod';
+          } else {
+            return 'lightgrey';
+          }
+        });
+
+      stones3
+  
+        .attr('x', (d,i) => {
+          return Math.floor(i%22)*(gridSize+ gap);
+        })
+        .attr('y', (d,i) => {
+          return Math.floor(i/22)*(gridSize+ gap);
+        })
+        .attr('width', gridSize)
+        .attr('height', gridSize)
+
+
+      
+        let goldCount3 = 0;
+        stones3.each(function(d) {
+          if (d.resistance == 'true') {
+            goldCount3++;
+          }
+        });
+
+        stones3.style('fill', (d, i) => {
+          if (d.double == 'true') {return 'palegoldenrod'}
+          else if (i < goldCount3) {return 'goldenrod'}
+          else {return'lightgrey'}
+        });
+    
+        // Step 9. Tooltips
+      stones1
+        .on('mousemove', function(d,i){
+            d3.select(this).classed('show',true);
+        })
+        .on('mouseout', function(d,i){
+                d3.select(this).classed('show',false);
+        })
+
+        stones2
+        .on('mousemove', function(d,i){
+            d3.select(this).classed('show',true);
+        })
+        .on('mouseout', function(d,i){
+                d3.select(this).classed('show',false);
+        })
+
+        stones3
+        .on('mousemove', function(d,i){
+            d3.select(this).classed('show',true);
+        })
+        .on('mouseout', function(d,i){
+                d3.select(this).classed('show',false);
+        })
+
+
+    })
+
+    // Charts 4 to 6
+    <script>
+
+// Step 4. load your data with d3.csv()
+d3.csv("stumbling_stones_hamburg_analysis.csv")
+// d3.json("happiness-sample-data.json")
+  .then(data2 => {
+
+    // check if the data is loaded:
+    console.log(data2)
+
+    // == your code happens below ==
+    
+    // Step 5. create an SVG container inside #my-svg-chart using d3.select().append()
+    const myChart4 = d3
+      .select('#my-svg-chart4')
+      .append('svg')
+      .attr('width', 640)
+      .attr('height',640)
+
+      const myChart5 = d3
+      .select('#my-svg-chart5')
+      .append('svg')
+      .attr('width', 640)
+      .attr('height',640)
+
+      const myChart6 = d3
+      .select('#my-svg-chart6')
+      .append('svg')
+      .attr('width', 640)
+      .attr('height',640)
+
+
+    // Step 6. create SVG elements binded with data
+    const stones4 = myChart4
+      .selectAll('g')
+      .data(data2)
+      .join('g');
+
+      const stones5 = myChart5
+      .selectAll('rect')
+      .data(data2)
+      .join('rect');
+
+      const stones6 = myChart6
+      .selectAll('rect')
+      .data(data2)
+      .join('rect');
+
+    // Step 7. Position the SVG shapes at the right places
+    const gridSize = 6, gap = 2;
+
+    stones4
+      // SVG rectangle specific attributes
+      .append('rect')
+      .attr('x', (d,i) => {
+        return Math.floor(i%100)*(gridSize+ gap);
+      })
+      .attr('y', (d,i) => {
+        return Math.floor(i/100)*(gridSize+ gap);
+      })
+      .attr('width', gridSize)
+      .attr('height', gridSize)
+
+      stones4
+      .append('text')
+      // SVG text specific attributes
+      .attr('x', (d,i) => {
+        return Math.floor(i%100)*(gridSize+ gap);
+      })
+      .attr('y', (d,i) => {
+        return Math.floor(i/100)*(gridSize+ gap) + gridSize;
+      })
+      .attr('dy', -5)
+ //     .text((d,i)=> d.jewish);
+
+
+    // Step 8. Encode data onto the SVG shapes
+    let goldCount4 = 0;
+      stones4.each(function(d) {
+        if (d.deported == 'True') {
+          goldCount4++;
+        }
+      });
+
+      stones4.style('fill', (d, i) => {
+        if (i < goldCount4) {
+          return 'goldenrod';
+        } else {
+          return 'lightgrey';
+        }
+      });
+
+    stones5
+
+      .attr('x', (d,i) => {
+        return Math.floor(i%100)*(gridSize+ gap);
+      })
+      .attr('y', (d,i) => {
+        return Math.floor(i/100)*(gridSize+ gap);
+      })
+      .attr('width', gridSize)
+      .attr('height', gridSize)
+
+
+      let goldCount5 = 0;
+      stones5.each(function(d) {
+        if (d.murdered == 'True') {
+          goldCount5++;
+        }
+      });
+
+      stones5.style('fill', (d, i) => {
+        if (i < goldCount5) {
+          return 'goldenrod';
+        } else {
+          return 'lightgrey';
+        }
+      });
+
+    stones6
+
+      .attr('x', (d,i) => {
+        return Math.floor(i%100)*(gridSize+ gap);
+      })
+      .attr('y', (d,i) => {
+        return Math.floor(i/100)*(gridSize+ gap);
+      })
+      .attr('width', gridSize)
+      .attr('height', gridSize)
+
+
+      let goldCount6 = 0;
+      stones6.each(function(d) {
+        if (d.Auschwitz == 'True') {
+          goldCount6++;
+        }
+      });
+
+      stones6.style('fill', (d, i) => {
+        if (i < goldCount6) {
+          return 'goldenrod';
+        } else {
+          return 'lightgrey';
+        }
+      });
+      
+      // Step 9. Tooltips
+    stones4
+      .on('mousemove', function(d,i){
+          d3.select(this).classed('show',true);
+      })
+      .on('mouseout', function(d,i){
+              d3.select(this).classed('show',false);
+      })
+
+      stones5
+      .on('mousemove', function(d,i){
+          d3.select(this).classed('show',true);
+      })
+      .on('mouseout', function(d,i){
+              d3.select(this).classed('show',false);
+      })
+
+      stones6
+      .on('mousemove', function(d,i){
+          d3.select(this).classed('show',true);
+      })
+      .on('mouseout', function(d,i){
+              d3.select(this).classed('show',false);
+      })
+
+
+  })
+
+</script>
+
+</script>
 </head>
 
 <body>
@@ -224,26 +579,28 @@
       <figcaption>Stumbling stones in my neighborhood. photo: Lisa-Marie Eckardt</figcaption>
   </figure>
 </div>
-<div class="content">
-    <p></p>
-    
-    <div class="content">
-        <div class="header">
-            <p></p>
-            <h1>What happened to my Neighbors?</h1>
-            <p class="subhead">How the biggest memorial in the world reminds us of victims of the Nazis in many German cities and all over Europe. <br/br> What we can learn about them and our neighborhoods.</p>
-            <p class="byline">By <a href="https://lisamarieeckardt.wordpress.com/">Lisa-Marie Eckardt</a></p>
-         </div>
-        
 
+<div class="content">
+<div class="header">
+    <p></p>
+    <h1>What happened to my Neighbors?</h1>
+    <p class="subhead">How the biggest decentralized memorial in the world reminds us of victims of the Nazis in many German cities and all over Europe. <br/br> What we can learn about them and our neighborhoods.</p>
+    <p class="byline">By <a href="https://lisamarieeckardt.wordpress.com/">Lisa-Marie Eckardt</a></p>
+ </div>
+
+
+ <br></br>
+  <p>Actually, each piece of the biggest decentralized memorial in the world is pretty small: Stumbling stones (in German: Stolpersteine) are tiny shiny stones in the pavement. But you can find them in the streets of almost every city in Germany, in many European countries and in Russia. 
+  <br> </br> 
+  Each stone reminds us of a victim of the nazis, right in front of the house where they last lived. Each stone has an inscription: A name, the year the person was born and sometimes the year they died. But often you can only guess, when you read the word "deported". <br></br> Although the stones are called stumbling stones they are even in the ground and you will not stumble. So you have to take a closer look ... That is why I want to take you on a walk to find all of the stones in my neighborhood in Hamburg-Wilhelmsburg:</p>   
+</div>
+    
+<div class="full-width">
         
-         <br></br>
-        <p>Actually, the biggest (decentral!) memorial in the world is pretty small: Stumbling stones (in German: Stolpersteine) are tiny shiny stones in the pavement. But you can find them in the streets of almost every city in Germany, in many European countries and in Russia. <br> </br> Each stone reminds us of a victim of the nazis, right in front of the house where they last lived. Each stone has an inscription: A name, the year the person was born and sometimes the year they died. But often you can only guess, when you read the word "deported". <br></br> Although the stones are called stumbling stones they are even in the ground and you will not stumble. So you have to take a closer look ... That is why I want to take you on a walk to find all of the stones in my neighborhood in Hamburg-Wilhelmsburg:</p>   
-      
   
-          <section id="scrolly">
-            <div class="sticky-thing">
-              <div class="ai2html-container">
+  <section id="scrolly">
+  <div class="sticky-thing">
+  <div class="ai2html-container">
     
     <!-- ai2html goes below this line -->
     
@@ -677,13 +1034,6 @@
 </div>
 
 <!-- End ai2html - 2024-07-27 21:28 -->
-
-
-
-
-
-    
-    
     <!-- ai2html goes above this line -->
     
               </div>
@@ -897,44 +1247,98 @@
                   }
                   return result;
               };
-          }
-    
-         
+          }  
       })();
     </script>
-<div class="content"></div>
-
-<p>The project by the artist Gunter Demnig started in 1992. Today there are more than 100.000 stumbling stones.
-  Maybe that sounds like a lot. <br> </br>
-  But 6 million jewish people where murdered in the Holocaust. And according to the <a href="https://encyclopedia.ushmm.org/content/en/article/documenting-numbers-of-victims-of-the-holocaust-and-nazi-persecution">United States Holocaust Memorial Museum (USHMM)</a> there were about 17 million victims all together – including a large number of sovjet, polish and serbian non-jewish civilians, prisioners of war, disabled people, Sinti and Roma, homosexual people and other groups. Political oponents and people who fought for the resistance are not includet in the USHMM statistic.</p>
-
-<p> Hamburg has 6971 (July 2024) stumbling stones. The most are in the borough Eimsbüttel with 2922 stones. You can find 1260 of them in the district Rotherbaum – a wealthy part of the city where the University of Hamburg is located.</p> 
-
-
-<iframe title="Most of Hamburgs &quot;Stumbling Stones&quot; in Rotherbaum" aria-label="Map" id="datawrapper-chart-yfXA9" 
-            src="https://datawrapper.dwcdn.net/yfXA9/2/" scrolling="no" frameborder="0" 
-            style="width: 0; min-width: 100% !important; border: none;" height="687" data-external="1"></iframe>
-        <script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r=0;r<e.length;r++)if(e[r].contentWindow===a.source){var i=a.data["datawrapper-height"][t]+"px";e[r].style.height=i}}}))}();
-        </script>
-
-<p> That there are just a few stones in my neighborhood could have different reasons: The project is not complete yet, each stone needs a sponsor and my neighborhood is less wealthy than others. Also my district is on an island so it is a little remote and not as much populated (today but probabably also back then). Or was it maybe a place where people got more support to hide or leave the country? I have to do more research to answer that question.
-</p>
-
-<p> In Berlin there are 10.755 stumbling stones. With more than 1600 stones the city district Charlottenburg has the most. There are streets with more than 100 victims – 155 lived in Sybelstraße, 122 in Giesebrechtstraße. The district Wilmerdorf has more than 1400 and Mitte more than 1000.</p>    
-
-<iframe title="More stones in the west" aria-label="Karte" id="datawrapper-chart-OkQ0o" 
-            src="https://datawrapper.dwcdn.net/OkQ0o/1/" scrolling="no" frameborder="0" 
-            style="width: 0; min-width: 100% !important; border: none;" height="598" data-external="1"></iframe>
-        <script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r=0;r<e.length;r++)if(e[r].contentWindow===a.source){var i=a.data["datawrapper-height"][t]+"px";e[r].style.height=i}}}))}();
-        </script>
-
-
-<p> 164 victims with stumbling stones in Berlin had the surname Cohn. Among the 10 most common names are also Wolff (90), Hirsch (73), Lewin (69), Levy (67), Rosenthal (66), Meyer (64), Schlesinger (43), Blumenthal (41) and Goldstein (40).
-</p>   
-
+  </div>
 </div>
-    </div>
-    <div class="footer">
+</div>
+
+<div class = content>
+  <h2>Behind the Stones in my Neighborhood</h2>
+  <p>How many victims in Hamburg-Wilhelmsburg with stumbling stones got deportated for being jewish ...</p>
+  <div id="my-svg-chart1"></div>
+  <p>... homosexual ...</p>
+  <div id="my-svg-chart2"></div>
+  <p> ... or supporting resistance. Some of them got two stones (pale).</p>
+  <div id="my-svg-chart3"></div>
+  <br></br>
+</div>
+
+
+  <div class="content">
+    <p>The project by the artist Gunter Demnig started in 1992. Today there are more than 100.000 stumbling stones.
+    Maybe that sounds like a lot. <br> </br>
+    But 6 million jewish people where murdered in the Holocaust. And according to the <a href="https://encyclopedia.ushmm.org/content/en/article/documenting-numbers-of-victims-of-the-holocaust-and-nazi-persecution">United States Holocaust Memorial Museum (USHMM)</a> there were about 17 million victims all together – including a large number of sovjet, polish and serbian non-jewish civilians, prisioners of war, disabled people, Sinti and Roma, homosexual people and other groups. Political oponents and people who fought for the resistance are not includet in the USHMM statistic.
+    </p>
+    <p> Hamburg has 6971 (July 2024) stumbling stones. You can find most of them in the districts Rotherbaum, Harvestehude and Eimsbüttel – which are more central, higher populated and wealthier parts of the city.</p> 
+  </div>
+  <div class="content">
+      <iframe title="Most of Hamburgs Stumbling Stones in Rotherbaum" aria-label="Bar Chart" id="datawrapper-chart-X7K8V" 
+      src="https://datawrapper.dwcdn.net/X7K8V/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="332" data-external="1"></iframe>
+    <script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r=0;r<e.length;r++)if(e[r].contentWindow===a.source){var i=a.data["datawrapper-height"][t]+"px";e[r].style.height=i}}}))}();
+    </script>
+   </div>
+   
+  <div class="content">
+    <p> In 2023 the <a href="https://forza-hamburg.de/?Impressum&Erinnern_am_Rothenbaum_-_Alle_Stolpersteine_verlegt&realblogaction=view&realblogID=14&page=1.">local sports club HSV</a> donated a big number of stones in Rotherbaum. This district is where the University of Hamburg is located and it is also one of the richest.</p>
+    </p> 
+    <br> </br>
+  </div>
+
+  <div class = content>
+    <h2>Behind the Stones in my City</h2>
+    <p>How many victims with stumbling stones in Hamburg have been deported?</p>
+    <div id="my-svg-chart4"></div>
+    <p>How many have been murdered?</p>
+    <div id="my-svg-chart5"></div>
+    <p>How many were brought to Auschwitz?</p>
+    <div id="my-svg-chart6"></div>
+  </div>
+
+  <div class="full-width">
+    
+    <figure>
+      <h2>Find all Stumbling Stones in Hamburg here</h2> 
+      <br> </br>
+    <iframe title="Most of Hamburgs &quot;Stumbling Stones&quot; in Rotherbaum" aria-label="Map" id="datawrapper-chart-yfXA9" 
+    src="https://datawrapper.dwcdn.net/yfXA9/2/" scrolling="no" frameborder="0" 
+    style="width: 0; min-width: 100% !important; border: none;" height="687" data-external="1"></iframe>
+    <script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r=0;r<e.length;r++)if(e[r].contentWindow===a.source){var i=a.data["datawrapper-height"][t]+"px";e[r].style.height=i}}}))}();
+    </script>
+    </figure>
+    <br> </br>
+  </div>
+  
+ 
+  <div class="content">
+    <br> </br>
+    <p> That there are just a few stones in my neighborhood could have different reasons: The project is not complete yet, each stone needs a sponsor and my neighborhood is less wealthy than others. Also my district is on an island so it is a little remote and not as much populated (today but probabably also back then). Or was it maybe a place where people got more support to hide or leave the country? I have to do more research to answer that question.
+    </p> 
+    <p> In Berlin there are 10.755 stumbling stones. With more than 1600 stones the city district Charlottenburg has the most. There are streets with more than 100 victims – 155 lived in Sybelstraße, 122 in Giesebrechtstraße. The district Wilmerdorf has more than 1400 and Mitte more than 1000.   
+    </p>    
+    <p> 164 victims with stumbling stones in Berlin had the surname Cohn. Among the 10 most common names are also Wolff (90), Hirsch (73), Lewin (69), Levy (67), Rosenthal (66), Meyer (64), Schlesinger (43), Blumenthal (41) and Goldstein (40).
+    </p>  
+    <br> </br>
+  </div>
+
+
+  <div class="full-width">
+  
+    <figure>
+      <h2>Find all Stumbling Stones in Berlin here</h2> 
+      <br> </br>
+      <iframe title="More stones in the west" aria-label="Karte" id="datawrapper-chart-OkQ0o" 
+      src="https://datawrapper.dwcdn.net/OkQ0o/1/" scrolling="no" frameborder="0" 
+      style="width: 0; min-width: 100% !important; border: none;" height="598" data-external="1"></iframe>
+    <script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r=0;r<e.length;r++)if(e[r].contentWindow===a.source){var i=a.data["datawrapper-height"][t]+"px";e[r].style.height=i}}}))}();
+    </script>
+    </figure>
+    <br> </br>
+   
+  </div>
+
+  <div class="footer">
         <div class="content">
             <p>You can find this project <a href="https://github.com/LisaMEckardt/project2">here on GitHub</a></p>
         </div>
