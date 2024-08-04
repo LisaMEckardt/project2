@@ -1,0 +1,23 @@
+,address,lat,lon,name,jewish,homosexual,resistance,double
+0,Ilenbrook 14,53517822,9989303,Bruno Schulz,false,true,false,false
+1,Industriestraße 160,53519243,9984024,Edith Eggers geb. Libis,true,false,false,false
+2,Industriestraße 160,53519243,9984024,Frida Libis geb. Blumann,true,false,false,false
+3,Industriestraße 160,53519243,9984024,Siegmund Libis,true,false,false,false
+4,Kunertweg 5,53519245,9983446,Martin Furmanek,false,false,true,false
+5,Mannesallee 20,53513952,9990804,Hermine Baron geb. Löw,false,false,true,true
+6,Mannesallee 20,53513952,9990804,Katharina Leipelt geb. Baron,false,false,true,true
+7,Mannesallee 20,53513952,9990804,Hans Konrad Leipelt,false,false,true,true
+8,Mannesallee 34,53514233,9986745,Israel Bartfeld,true,false,false,false
+9,Mannesallee 34,53514233,9986745,Sara Bartfeld geb. Fleischmann,true,false,false,false
+10,Otterhaken 5,53516907,9984474,Rudolf Mokry,false,false,true,false
+11,Rotenhäuser Straße 67,53505509,9989986,Hermine Baron geb. Löw,false,false,true,false
+12,Rotenhäuser Straße 67,53505509,9989986,Hans Leipelt,false,false,true,false
+13,Rotenhäuser Straße 67,53505509,9989986,Katharina Leipelt,false,false,true,false
+14,Veringstraße 47,53513847,9986895,Helene Guttmann geb. Goldberg,true,false,false,false
+15,Veringstraße 47,53513847,9986895,Jacob Guttmann,true,false,false,false
+16,Vogelhüttendeich 34,53518171,9984533,Fanny Borower geb. Schwarz,true,false,false,false
+17,Vogelhüttendeich 34,53518171,9984533,Wolf Borower,true,false,false,false
+18,Vogelhüttendeich 40,53518017,9985188,Clara Cohn geb. Laser,true,false,false,false
+19,Vogelhüttendeich 40,53518017,9985188,Adolf Laser,true,false,false,false
+20,Vogelhüttendeich 40,53518017,9985188,Rudolph Michael Laser,true,false,false,false
+21,Rotenhäuser Straße 67,53505509,53505509,Maria Leipelt,false,false,true,
