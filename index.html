@@ -215,9 +215,8 @@
 <!-- your JS code that uses d3 to manipulate data -->
 <script>
 
-  // Step 4. load your data with d3.csv()
-  d3.csv("stumbling_stones_d3.csv")
-  // d3.json("happiness-sample-data.json")
+  // Load your data with d3.csv()
+  d3.csv("docs/stumbling_stones_d3.csv")
     .then(data => {
 
       // check if the data is loaded:
@@ -225,7 +224,7 @@
 
       // == your code happens below ==
       
-      // Step 5. create an SVG container inside #my-svg-chart using d3.select().append()
+      // Create an SVG container inside #my-svg-chart using d3.select().append()
       const myChart1 = d3
         .select('#my-svg-chart1')
         .append('svg')
@@ -245,7 +244,7 @@
         .attr('height', 50)
 
 
-      // Step 6. create SVG elements binded with data
+      // Create SVG elements binded with data
       const stones1 = myChart1
         .selectAll('g')
         .data(data)
@@ -261,7 +260,7 @@
         .data(data)
         .join('rect');
 
-      // Step 7. Position the SVG shapes at the right places
+      // Position the SVG shapes at the right places
       const gridSize = 20, gap = 2;
 
       stones1
@@ -289,7 +288,7 @@
    //     .text((d,i)=> d.jewish);
 
 
-      // Step 8. Encode data onto the SVG shapes
+      // Encode data onto the SVG shapes
       let goldCount1 = 0;
         stones1.each(function(d) {
           if (d.jewish == 'true') {
@@ -358,7 +357,7 @@
           else {return'lightgrey'}
         });
     
-        // Step 9. Tooltips
+        // Tooltips
       stones1
         .on('mousemove', function(d,i){
             d3.select(this).classed('show',true);
@@ -385,21 +384,20 @@
 
 
     })
+    </script>
 
     // Charts 4 to 6
+   
     <script>
-
-// Step 4. load your data with d3.csv()
-d3.csv("stumbling_stones_hamburg_analysis.csv")
-// d3.json("happiness-sample-data.json")
-  .then(data2 => {
+    d3.csv("docs/stumbling_stones_hamburg_analysis.csv")
+    .then(data2 => {
 
     // check if the data is loaded:
     console.log(data2)
 
     // == your code happens below ==
     
-    // Step 5. create an SVG container inside #my-svg-chart using d3.select().append()
+    // Create an SVG container inside #my-svg-chart using d3.select().append()
     const myChart4 = d3
       .select('#my-svg-chart4')
       .append('svg')
@@ -419,7 +417,7 @@ d3.csv("stumbling_stones_hamburg_analysis.csv")
       .attr('height',640)
 
 
-    // Step 6. create SVG elements binded with data
+    // Create SVG elements binded with data
     const stones4 = myChart4
       .selectAll('g')
       .data(data2)
@@ -435,7 +433,7 @@ d3.csv("stumbling_stones_hamburg_analysis.csv")
       .data(data2)
       .join('rect');
 
-    // Step 7. Position the SVG shapes at the right places
+    // Position the SVG shapes at the right places
     const gridSize = 6, gap = 2;
 
     stones4
@@ -463,7 +461,7 @@ d3.csv("stumbling_stones_hamburg_analysis.csv")
  //     .text((d,i)=> d.jewish);
 
 
-    // Step 8. Encode data onto the SVG shapes
+    // Encode data onto the SVG shapes
     let goldCount4 = 0;
       stones4.each(function(d) {
         if (d.deported == 'True') {
@@ -533,7 +531,7 @@ d3.csv("stumbling_stones_hamburg_analysis.csv")
         }
       });
       
-      // Step 9. Tooltips
+      // Tooltips
     stones4
       .on('mousemove', function(d,i){
           d3.select(this).classed('show',true);
